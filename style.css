@@ -1,0 +1,104 @@
+#container {
+    width:90%;
+    height:95%;
+    margin: auto;
+    border: 3px solid #754643;
+    background-color: #ffe275;
+    opacity: 0.975;
+}
+.block {
+    height:60%;
+    margin: 1%;
+    padding: 1%;
+    color: #5c1e53;
+    background-color: #ffec85;
+    border: 2px solid #754643;
+}
+#header{
+    width: 90%;
+    height: 8%;
+    margin: 1% auto;
+}
+#name{
+    font-size: 1.5em;
+    font-family:monospace;
+    text-align: center;
+    text-shadow: -1px -1px 1px #ba2609;
+}
+#margins{
+    width: 26%;
+    float: left;
+}
+#image{
+    width: 30%;
+    float: left;
+    text-align: center;
+    border-radius: 10%;
+}
+#image img{
+    width: 75%;
+    height: 75%;
+    margin: 0 auto;
+    border-radius: 20%;
+}
+#table{
+    width: 30%;
+    float: right;
+}
+#clearfix{
+    width: 90%;
+    height: 8%;
+    clear: both;
+    margin: 1% auto;
+}
+#clearfix p{
+    vertical-align: bottom;
+}
+.styled-select select {
+    background: transparent;
+    width: 110%;
+    height:100%;
+    font-size: 16px;
+    border: 2px solid #af81b7;
+
+
+}
+.styled-select {
+    width: 90%;
+    height:36%;
+    overflow: hidden;
+    background: no-repeat center #f8e3d7;
+}
+table{
+    border-collapse: collapse;
+    border: 3px solid #754643;
+    width: 98%;
+}
+td {
+    border: 2px solid rgba(162, 97, 96, 0.36);
+    text-align: center;
+}
+th{
+    border: 2px solid rgba(162, 97, 96, 0.36);
+    text-align: center;
+}
+
+fieldset{height:26%; }
+
+body, html,form {
+    height:100%;
+}
+
+html{
+    background: url("res/main_background.png");
+}
+
+/* * MYne * */
+.invalid_input_message{
+    color: rgba(186, 38, 9, 0.87);
+    margin-left: 8px;
+}
+.invalid_input {
+    border: 1px solid rgba(186, 38, 9, 0.87);
+}
+
