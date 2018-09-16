@@ -11,6 +11,7 @@
 
 #table {
     grid-area: table;
+    vertical-align: center;
 }
 
 #footer {
@@ -58,11 +59,10 @@
     border: 2px solid rgba(162, 97, 96, 0.36);
 }
 .styled-select {
-    width: 90%;
+    width: 83%;
     height: 40%;
     overflow: hidden;
-    text-align: center;
-    background: no-repeat right #ffaa33;
+    background: url(/res/arrow.png) no-repeat right #ffaa33;
 }
 
 table {
@@ -84,13 +84,12 @@ th {
 fieldset {
     height: 80%;
 }
-#container {
+#table_container {
     display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 60% 40%;
     grid-template-rows: auto;
     grid-template-areas: "header header"
-    "margins image"
-    "table table"
+    "table image"
     "footer footer";
     width: 95%;
     font-family:monospace;
@@ -99,9 +98,23 @@ fieldset {
     opacity: 1;
     margin: 1% auto;
 }
+#form_container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas: "header header"
+    "margins image"
+    "footer footer";
+    width: 95%;
+    font-family:monospace;
+    border: 3px solid #341119;
+    background-color: #341119;
+    opacity: 1;
+    margin: 1% auto;
+}
+
 body, html {
     height:100%;
-    width: 100%;
 }
 html{
     background: #FF9D56 url("res/main_background.png");
@@ -112,8 +125,7 @@ html{
     font-size: 0.8em;
 }
 .invalid_input {
-    border: 2px solid #BA2609;
-    background-color: rgba(186, 38, 9, 0.4);
+    border: 4px solid #BA2609;
 }
 
 .param_field{
@@ -126,5 +138,12 @@ html{
 
 h4{
     margin: 0;
+}
+#y_input{
+    width: 83%;
+    font-size: 0.9em;
+    align-content: center;
+    border: 2px solid rgba(162, 97, 96, 0.36);
+    background: #ffaa33;
 }
 

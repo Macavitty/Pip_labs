@@ -1,37 +1,31 @@
-function submit(event) {
-    event.preventDefault();
-    if (validate()){
-        document.forms['main_form'].submit();
-    }
-    return true;
-}
-
-function validate() {
+/*function validate() {
     let y = document.forms['main_form']['y_input'],
         yValue = y.value;
     yValue = yValue.replace(/,/g, '.');
-        min_y = -5;
-        max_y = 5;
+    let min_y = -5;
+    let max_y = 5;
     if (yValue === "") {
         removeError(y, y.parentNode);
-        setError(y, y.parentNode, 'ну и где Y ?');
+        setError(y, y.parentNode, 'Где Y ?');
+        return false;
     }
     else if (isNaN(yValue)) {
         removeError(y, y.parentNode);
-        setError(y, y.parentNode, 'это определённо не число');
+        setError(y, y.parentNode, 'Это определённо не число');
+        return false;
     }
-    else if (yValue > max_y) {
+    else if (Math.round((yValue * 1000) / 1000) > max_y) {
         removeError(y, y.parentNode);
-        setError(y, y.parentNode, 'внезапно: ' + yValue + ' > ' + max_y + ' !');
+        setError(y, y.parentNode, 'Внезапно: ' + Math.round((yValue * 1000) / 1000) + ' > ' + max_y + ' !');
+        return false;
     }
-    else if (yValue < min_y) {
+    else if (Math.round((yValue * 1000) / 1000) < min_y) {
         removeError(y, y.parentNode);
-        setError(y, y.parentNode, 'внезапно: ' + yValue + ' < ' + min_y + ' !');
+        setError(y, y.parentNode, 'Внезапно: ' + Math.round((yValue * 1000) / 1000) + ' < ' + min_y + ' !');
+        return false;
     }
-    else return true;
-    return false;
-
-}
+    return true;
+} */
 
 function setError(elem, container, message) {
     let dynMessage = document.createElement('span');
@@ -58,8 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function disable_not_numbers() {
     let keys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-", ".", ","];
-    if (keys.indexOf(event.key) <= -1)
-    {
+    if (keys.indexOf(event.key) <= -1) {
         return false;
     }
     return true;

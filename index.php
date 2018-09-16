@@ -4,11 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>PIP LAB#1</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="shortcut icon" href="./res/terrikons.png" type="image/png">
-    <script type="text/javascript" src="validation.js"></script>
+    <link rel="shortcut icon" href="./res/duck.png" type="image/png">
+    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-<div id="container">
+<div id="form_container">
     <div id="header" class="block">
 		<span id="name">
             <h4>Лабораторная работа № 1<br/>
@@ -18,46 +18,44 @@
 		</span>
     </div>
     <div id="margins" class="block">
-        <form method="post" action="#" name="main_form">
-            <fieldset class="param_field">
-                <legend>Значение Х</legend>
-                <span>Выберите значение X:</span>
-                <div class="styled-select">
-                    <select name="x[]">
-                        <option value="-5">-5</option>
-                        <option value="-4">-4</option>
-                        <option value="-3">-3</option>
-                        <option value="-2">-2</option>
-                        <option value="-1">-1</option>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-            </fieldset>
-            <fieldset class="param_field">
-                <legend>Значение Y</legend>
-                <label for="y">Введите значение Y є (-5; 5):</label>
-                <p><input type='text' name='y_input' id="y_input" autocomplete="disable" onkeypress="return disable_not_numbers()"
-                          onfocus="removeError(this, this.parentNode)"
-                    onpaste="return disable_not_numbers()"></p>
-                <label for="y" id="y_note">*все числа округляются до 3 знаков после запятой*</label>
-            </fieldset>
-            <fieldset class="param_field">
-                <legend>Значение R</legend>
-                <span>Выберите значение R:</span>
-                <div class="styled-select">
-                    <select name="r[]">
-                        <option value="1">1</option>
-                        <option value="1,5">1.5</option>
-                        <option value="2">2</option>
-                        <option value="2,5">2.5</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-            </fieldset>
-            <p><input type="submit" name="submit" value="Проверить" id="submit_params" onsubmit="submit(this)"></p>
+        <form method="post" action="table.php" id="main_form" name="main_form" onsubmit="return validate()">
+        <fieldset class="param_field">
+            <legend>Значение Х</legend>
+            <span>Выберите значение X:</span>
+            <div class="styled-select">
+                <select name="x_input">
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option>
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="0" selected>0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset class="param_field">
+            <legend>Значение Y</legend>
+            <p><input type='text' name='y_input' id="y_input" placeholder="Y є (-5; 5)" autocomplete="off" onkeypress="return disable_not_numbers()"
+                      onfocus="removeError(this, this.parentNode)" onpaste="return disable_not_numbers()"></p>
+            <label for="y_input" id="y_note">*все числа округляются до 3 знаков после запятой*</label>
+        </fieldset>
+        <fieldset class="param_field">
+            <legend>Значение R</legend>
+            <span>Выберите значение R:</span>
+            <div class="styled-select">
+                <select name="r_input">
+                    <option value="1">1</option>
+                    <option value="1,5">1.5</option>
+                    <option value="2" selected>2</option>
+                    <option value="2,5">2.5</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </fieldset>
+        <p><input type="submit" name="mainform_submit" value="Проверить" id="mainform_submit"></p>
         </form>
 
     </div>
@@ -65,280 +63,41 @@
         <p><img src="./res/graph.png"></p>
         <p>Попадание точки на координатной плоскости в заданную область</p>
     </div>
-    <div id="table" class="block">
-        <table id="hit">
-            <caption>Результаты</caption>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <tr class="line">
-                <th class="number">№</th>
-                <th class="ox">X</th>
-                <th class="oy">Y</th>
-                <th class="rr">R</th>
-                <th class="boolean">Факт</th>
-            </tr>
-            <!-- inserting results in table -->
-            <?php
-            $json = file_get_contents('results.json');
-            $results = json_decode($json, FILE_USE_INCLUDE_PATH);
-            foreach ($results as $result) {
-                ?>
-                <tr class="line">
-                    <th class="number"> <?php echo $result->number; ?></th>
-                    <th class="ox"> <?php echo $result->x; ?></th>
-                    <th class="oy"> <?php echo $result->y; ?></th>
-                    <th class="rr"> <?php echo $result->r; ?></th>
-                    <th class="boolean"> <?php echo $result->answer; ?></th>
-                </tr>
-            <?php } ?>
-        </table>
-    </div>
     <div id="footer" class="block">
         <p><br/>&copy; Университет ИТМО<br/> 2018</p>
     </div>
 </div>
+<script>
+    // TODO remove validation to js file
+    function validate(){
+        let y = document.forms['main_form']['y_input'],
+            yValue = y.value;
+        yValue = yValue.replace(/,/g, '.');
+        let min_y = -5;
+       let max_y = 5;
+        if (yValue === "") {
+            removeError(y, y.parentNode);
+            setError(y, y.parentNode, 'Где Y ?');
+            return false;
+        }
+        else if (isNaN(yValue)) {
+            removeError(y, y.parentNode);
+            setError(y, y.parentNode, 'Это определённо не число');
+            return false;
+        }
+        else if (Math.round((yValue * 1000) / 1000) > max_y) {
+            removeError(y, y.parentNode);
+            setError(y, y.parentNode, 'Внезапно: ' + Math.round((yValue * 1000) / 1000) + ' > ' + max_y + ' !');
+            return false;
+        }
+        else if (Math.round((yValue * 1000) / 1000) < min_y) {
+            removeError(y, y.parentNode);
+            setError(y, y.parentNode, 'Внезапно: ' + Math.round((yValue * 1000) / 1000) + ' < ' + min_y + ' !');
+            return false;
+        }
+        return true;
+    }
+
+</script>
 </body>
 </html>
