@@ -19,43 +19,50 @@
     </div>
     <div id="margins" class="block">
         <form method="post" action="table.php" id="main_form" name="main_form" onsubmit="return validate()">
-        <fieldset class="param_field">
-            <legend>Значение Х</legend>
-            <span>Выберите значение X:</span>
-            <div class="styled-select">
-                <select name="x_input">
-                    <option value="-5">-5</option>
-                    <option value="-4">-4</option>
-                    <option value="-3">-3</option>
-                    <option value="-2">-2</option>
-                    <option value="-1">-1</option>
-                    <option value="0" selected>0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-        </fieldset>
-        <fieldset class="param_field">
-            <legend>Значение Y</legend>
-            <p><input type='text' name='y_input' id="y_input" placeholder="Y є (-5; 5)" autocomplete="off" onkeypress="return disable_not_numbers()"
-                      onfocus="removeError(this, this.parentNode)" onpaste="return disable_not_numbers()"></p>
-            <label for="y_input" id="y_note">*все числа округляются до 3 знаков после запятой*</label>
-        </fieldset>
-        <fieldset class="param_field">
-            <legend>Значение R</legend>
-            <span>Выберите значение R:</span>
-            <div class="styled-select">
-                <select name="r_input">
-                    <option value="1">1</option>
-                    <option value="1,5">1.5</option>
-                    <option value="2" selected>2</option>
-                    <option value="2,5">2.5</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-        </fieldset>
-        <p><input type="submit" name="mainform_submit" value="Проверить" id="mainform_submit"></p>
+            <fieldset class="param_field">
+                <legend>Значение Х</legend>
+                <span>Выберите значение X:</span>
+                <div class="styled-select">
+                    <select name="x_input">
+                        <option value="-5">-5</option>
+                        <option value="-4">-4</option>
+                        <option value="-3">-3</option>
+                        <option value="-2">-2</option>
+                        <option value="-1">-1</option>
+                        <option value="0" selected>0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset class="param_field">
+                <legend>Значение Y</legend>
+                <p><input type='text'
+                          name='y_input'
+                          id="y_input"
+                          placeholder="Y є (-5; 5)"
+                          autocomplete="off"
+                          onkeypress="return disable_not_numbers()"
+                          onfocus="removeError(this, this.parentNode)"
+                          onpaste="return disable_not_numbers()"
+                          maxlength="17"> </br></p>
+                <!---<label for="y_input" id="y_note">*числа округляются до 15 знаков после запятой*</label> --->
+            </fieldset>
+            <fieldset class="param_field">
+                <legend>Значение R</legend>
+                <span>Выберите значение R:</span>
+                <div class="styled-select">
+                    <select name="r_input">
+                        <option value="1">1</option>
+                        <option value="1,5">1.5</option>
+                        <option value="2" selected>2</option>
+                        <option value="2,5">2.5</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </fieldset>
+            <p><input type="submit" name="mainform_submit" value="Проверить" id="mainform_submit"></p>
         </form>
 
     </div>
@@ -64,17 +71,18 @@
         <p>Попадание точки на координатной плоскости в заданную область</p>
     </div>
     <div id="footer" class="block">
-        <p><br/>&copy; Университет ИТМО<br/> 2018</p>
-    </div>
+        <p><a href="http://en.ifmo.ru/en/" target="_blank"><br/>&copy; 2018 Университет ИТМО<br/></a>
+        </p></div>
 </div>
-<script>
+<script type="text/javascript" language="javascript">
     // TODO remove validation to js file
-    function validate(){
+
+    function validate() {
         let y = document.forms['main_form']['y_input'],
             yValue = y.value;
         yValue = yValue.replace(/,/g, '.');
-        let min_y = -5;
-       let max_y = 5;
+        const min_y = -5;
+        const max_y = 5;
         if (yValue === "") {
             removeError(y, y.parentNode);
             setError(y, y.parentNode, 'Где Y ?');
@@ -85,14 +93,9 @@
             setError(y, y.parentNode, 'Это определённо не число');
             return false;
         }
-        else if (Math.round((yValue * 1000) / 1000) > max_y) {
+        else if (yValue >= max_y || yValue <= min_y) {
             removeError(y, y.parentNode);
-            setError(y, y.parentNode, 'Внезапно: ' + Math.round((yValue * 1000) / 1000) + ' > ' + max_y + ' !');
-            return false;
-        }
-        else if (Math.round((yValue * 1000) / 1000) < min_y) {
-            removeError(y, y.parentNode);
-            setError(y, y.parentNode, 'Внезапно: ' + Math.round((yValue * 1000) / 1000) + ' < ' + min_y + ' !');
+            setError(y, y.parentNode, 'Внезапно: ' + yValue + ' \u{2209} (' + min_y + ' ; ' + max_y + ') !');
             return false;
         }
         return true;

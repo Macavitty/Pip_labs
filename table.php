@@ -31,8 +31,8 @@
                 <th class="work_time">Время работы скрипта</th>
             </tr>
             <?php
-            $time_start = microtime(true);
             session_start();
+            $start_time = microtime(true);
             function isPointOnGraph()
             {
                 $x = $_POST['x_input'];
@@ -50,26 +50,26 @@
                 return false;
             }
 
-            $res = isPointOnGraph() ? "да" : "нет";
-            $currtime = date("G:i:s");
-            $time_end = microtime(true);
-            $time = ($time_end - $time_start)*1000000;
-            $result = array($_POST['x_input'], $_POST['y_input'], $_POST['r_input'], $res, $currtime, $time);
-            if (!isset($_SESSION['history'])) {
-                $_SESSION['history'] = array();
+            $hit = isPointOnGraph() ? "да" : "нет";
+            $curr_time = date("G:i:s");
+            $stop_time = microtime(true);
+            $work_time = round($stop_time - $start_time, 4).' сек';
+            $row = array($_POST['x_input'], $_POST['y_input'], $_POST['r_input'], $hit, $curr_time, $work_time);
+            if (!isset($_SESSION['rows'])) {
+                $_SESSION['rows'] = array();
             }
 
-            array_push($_SESSION['history'], $result);
+            array_push($_SESSION['rows'], $row);
 
-            foreach ($_SESSION['history'] as $value) { ?>
+            foreach ($_SESSION['rows'] as $r) { ?>
 
                 <tr class="line">
-                    <th class="ox"><?php echo $value[0] ?></th>
-                    <th class="oy"><?php echo $value[1] ?></th>
-                    <th class="rr"><?php echo $value[2] ?></th>
-                    <th class="bool_result"><?php echo $value[3] ?></th>
-                    <th class="curr_time"><?php echo $value[4]?></th>
-                    <th class="work_time"><?php echo $value[5] ?></th>
+                    <th class="ox"><?php echo $r[0] ?></th>
+                    <th class="oy"><?php echo $r[1] ?></th>
+                    <th class="rr"><?php echo $r[2] ?></th>
+                    <th class="bool_result"><?php echo $r[3] ?></th>
+                    <th class="curr_time"><?php echo $r[4]?></th>
+                    <th class="work_time"><?php echo $r[5] ?></th>
                 </tr>
 
             <?php } ?>
@@ -77,7 +77,8 @@
         </table>
     </div>
     <div id="footer" class="block">
-        <p><br/>&copy; Университет ИТМО<br/> 2018</p>
+        <p><a href="http://en.ifmo.ru/en/" target="_blank"><br/>&copy; 2018 Университет ИТМО<br/></a>
+        </p></div>
     </div>
 </div>
 </body>
