@@ -15,6 +15,7 @@
                 Вариант 18102</h4><br/>
 		Выполнили: Баталов Евгений Витальевич и Прилуцкая Татьяна Ивановна <br/>
 		Группа: P3201 <br/>
+
 		</span>
     </div>
     <div id="margins" class="block">
@@ -67,15 +68,14 @@
 
     </div>
     <div id="image" class="block">
-        <p><img src="./res/graph.png"></p>
-        <p>Попадание точки на координатной плоскости в заданную область</p>
+        <img src="./res/graph.png" alt="здесь должен быть график :-{">
+        <p>Координатная плоскость</p>
     </div>
     <div id="footer" class="block">
         <p><a href="http://en.ifmo.ru/en/" target="_blank"><br/>&copy; 2018 Университет ИТМО<br/></a>
         </p></div>
 </div>
 <script type="text/javascript" language="javascript">
-    // TODO remove validation to js file
 
     function validate() {
         let y = document.forms['main_form']['y_input'],

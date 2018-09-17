@@ -17,8 +17,8 @@
 		</span>
     </div>
     <div id="image" class="block">
-        <p><img src="./res/graph.png"></p>
-        <p>Попадание точки на координатной плоскости в заданную область</p>
+        <img src="./res/graph.png" alt="здесь должен быть график :-{">
+        <p>Координатная плоскость</p>
     </div>
     <div id="table" class="block">
         <table id="hit">
@@ -37,13 +37,13 @@
             {
                 $x = $_POST['x_input'];
                 $y = $_POST['y_input'];
-                $r = $_POST['z_input'];
+                $r = $_POST['r_input'];
                 if (// I quadrant
-                    ($x >= 0 && $y >= 0 && $x * $x + $y * $y <= $r * $r / 4) || //x^2 + y^2 = (r/2)^2
+                    ($x >= 0 and $y >= 0 and $x * $x + $y * $y <= $r * $r / 4) || //x^2 + y^2 = (r/2)^2
                     // II quadrant
-                    ($x <= 0 && $x >= $r && $y <= r / 2 && $y >= 0) ||
+                    ($x <= 0 and abs($x) >= $r and $y <= $r / 2 and $y >= 0) ||
                     // III quadrant
-                    ($x <= 0 && $y <= 0 && $y >= (-2) * x - $r) // y = kx + b; y = -2x - r
+                    ($x <= 0 and $y <= 0 and $y >= (-2) * $x - $r) // y = kx + b; y = -2x - r
                 ) {
                     return true;
                 }

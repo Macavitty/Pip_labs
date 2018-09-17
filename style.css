@@ -135,12 +135,12 @@ input[type='submit']{
     color: darkred;
 }
 
+
 .styled-select select {
     background: transparent;
     width: 110%;
     height: 100%;
     font-size: 0.9em;
-    align-content: center;
     border: 2px solid rgba(162, 97, 96, 0.36);
 }
 
@@ -172,3 +172,4 @@ input[type='submit']{
 h4{
     margin: 0;
 }
+
