@@ -35,19 +35,23 @@ html, body {
 #table {
     grid-area: table;
     vertical-align: center;
-    width: 99%;
+    horiz-align: center;
+    width: 90%;
 }
 
 table {
     border-collapse: collapse;
     border: 2px solid rgba(255, 157, 86, 0.65);;
-    width: 98%;
+    width: 96%;
+    height: 90%;
     horiz-align: center;
+    margin: 2%;
 }
 
 td {
     border: 2px solid rgba(162, 97, 96, 0.36);
     text-align: center;
+    display:inline-block;
 }
 
 th {
@@ -70,7 +74,7 @@ th {
 #table_container {
     display: grid;
     justify-items: center;
-    grid-template-columns: 50% 40%;
+    grid-template-columns: 60% 40%;
     grid-template-rows: auto;
     grid-template-areas: "header header"
     "table image"

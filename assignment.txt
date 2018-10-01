@@ -69,3 +69,8 @@ FastCGI - особенности технологии, преимущества 
  FF9858
  754643
  B77FAD*/
+
+
+/*
+https://stackoverflow.com/questions/30309606/is-there-a-way-to-group-nth-child-css-rules-for-same-parent
+*/
