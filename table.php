@@ -66,9 +66,9 @@ function getValidR()
     <div id="table" class="block">
         <table id="hit">
             <?php
-            $x = $_POST['x_input'];
-            $y = $_POST['y_input'];
-            $r = $_POST['r_input'];
+            $x = getValidX();
+            $y = getValidY();
+            $r = getValidR();
             if ($r == "" || $y == "" || $x == "") {
                 ?>
             <tr class="line">
